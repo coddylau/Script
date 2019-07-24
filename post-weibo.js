@@ -19,6 +19,7 @@
         flag++
         if (flag > 3) {
           clearInterval(timer)
+          return
         }
         document.querySelector('.limits .S_txt1').click()
         document.querySelector('li[rank="1"] a').click()
