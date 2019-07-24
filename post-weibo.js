@@ -12,7 +12,12 @@
 (function () {
   "use strict";
   window.onload = function () {
-    document.querySelectorAll(".W_input")[1].addEventListener('focus', () => {
+    document.querySelector('.limits .S_txt1').click()
+    setTimeout(() => {
+      document.querySelector('.layer_menu_list').style.display = 'none'
+    }, 200);
+    document.querySelectorAll(".W_input")[1].addEventListener('change', () => {
+      if (document.querySelectorAll('li[action-type="select"]')[2].classList[0] === 'cur') { return }
       let flag = 1
       let timer
       timer = setInterval(() => {
@@ -21,7 +26,6 @@
           clearInterval(timer)
           return
         }
-        document.querySelector('.limits .S_txt1').click()
         document.querySelector('li[rank="1"] a').click()
       }, 500);
     })
