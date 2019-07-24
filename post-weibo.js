@@ -7,15 +7,23 @@
 // @grant        none
 // ==/UserScript==
 
-(function(){
-  let flag = 1
-  let timer
-  timer = setInterval(() => {
-    flag++
-    if(flag>3){
-      clearInterval(timer)
-    }
-      document.querySelector('.limits .S_txt1').click()
-      document.querySelector('li[rank="1"] a').click()
-  }, 1000);
-})()
+
+
+(function () {
+  "use strict";
+  window.onload = function () {
+    document.querySelectorAll(".W_input")[1].addEventListener('focus', () => {
+      let flag = 1
+      let timer
+      timer = setInterval(() => {
+        flag++
+        if (flag > 3) {
+          clearInterval(timer)
+        }
+        document.querySelector('.limits .S_txt1').click()
+        document.querySelector('li[rank="1"] a').click()
+      }, 500);
+    })
+
+  }
+})();

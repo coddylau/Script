@@ -7,9 +7,9 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
   'use strict';
   let inpu = document.querySelector('input[type="password"]')
-  inpu.value='weijibaike'
+  inpu.value = 'weijibaike'
   document.querySelector('input[type="submit"]').click()
 })();
