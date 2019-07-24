@@ -1,6 +1,6 @@
 ## 使用
 
-安装Tampermonkey后可使用以下脚本只用[Tampermonkey官网](https://www.tampermonkey.net/)
+安装Tampermonkey后可使用以下脚本[Tampermonkey官网](https://www.tampermonkey.net/)
 
 将js文件内容复制到脚本页面即可使用
 

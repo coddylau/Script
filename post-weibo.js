@@ -5,7 +5,6 @@
 // @author       coddylau
 // @match        https://weibo.com/*
 // @grant        none
-// @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // ==/UserScript==
 
 (function(){
@@ -16,7 +15,7 @@
     if(flag>3){
       clearInterval(timer)
     }
-      $('.limits .S_txt1')[0].click();
-      $('li[rank="1"] a')[0].click();
+      document.querySelector('.limits .S_txt1').click()
+      document.querySelector('li[rank="1"] a').click()
   }, 1000);
 })()
