@@ -21,6 +21,6 @@
 
 ### 删除网页canvas标签
 
-部分网站使用canvas占用电脑太多性能，删除这些canvas标签
+部分网站使用canvas占用电脑太多性能，删除这些canvas标签，画布小于300像素的不删除
 
 [删除canvas](https://github.com/coddylau/Script/blob/master/remove-canvas.js)

@@ -11,15 +11,17 @@
 
 (function () {
   'use strict';
-  window.onload = function () {
-    let log = console.log
-    let canva = document.querySelectorAll('canvas')
-    if (canva.length) {
-      log(`本页有${canva.length}处canvas`)
-      canva.forEach((value, index) => {
-        value.remove()
-        log(`已删除canvas${index + 1}处`)
-      })
+    window.onload = function () {
+        let log = console.log
+        let canvasList = document.querySelectorAll('canvas')
+        if (canvasList.length) {
+           // log(`本页有${canvasList.length}处canvas`)
+            canvasList.forEach((canvas, index) => {
+                if (canvas.width > 300) {
+                    canvas.remove()
+                    log(`已删除canvas${index + 1}处`)
+                }
+            })
+        }
     }
-  }
 })();
