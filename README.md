@@ -18,3 +18,9 @@
 用于此镜像地址的维基百科验证码免输入[镜像地址](https://zh.wikipedia.hk.cn/wiki/Wikipedia:%E9%A6%96%E9%A1%B5)
 
 [维基百科验证码免输入](https://github.com/coddylau/Script/blob/master/wiki.js)
+
+### 删除网页canvas标签
+
+部分网站使用canvas占用电脑太多性能，删除这些canvas标签
+
+[删除canvas](https://github.com/coddylau/Script/blob/master/remove-canvas.js)
