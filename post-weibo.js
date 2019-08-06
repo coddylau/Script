@@ -11,20 +11,28 @@
 
 (function () {
   "use strict";
-  window.onload = function () {
-    let postBtn = document.querySelector('.func_area')
+  addLoadEvent(postMyself)
 
-    document.querySelector('.limits .S_txt1').click()
-    
-    // 监视发送微博子节点
+  function postMyself() {
+    let log = console.log
+    let postArea = document.querySelector("textarea.W_input")
+    let postBtn = document.querySelector('.func_area')
+    // 点击发送微博选项
+    document.querySelector('a[action-type="showPublishTo"]').click()
+
+    // 查看是否有仅自己可见按钮
     let cb = () => {
-      document.querySelector('.layer_menu_list').style.display = 'none'
+      postArea.click()
+      // observer.disconnect()
     }
     let observer = new MutationObserver(cb)
     observer.observe(postBtn, { childList: true })
 
-    document.querySelectorAll(".W_input")[1].addEventListener('change', () => {
-      if (document.querySelectorAll('li[action-type="select"]')[2].classList[0] === 'cur') { return }
+    // 点击仅自己可见按钮
+    postArea.addEventListener('change', () => {
+      let tap = document.querySelectorAll('li[action-type="select"]')
+      // 检查仅自己可见按钮是否被选中
+      if (tap && tap[2].classList[0] === 'cur') { return }
       let flag = 1
       let timer
       timer = setInterval(() => {
@@ -33,9 +41,22 @@
           clearInterval(timer)
           return
         }
+        // 点击仅自己可见
         document.querySelector('li[rank="1"] a').click()
       }, 500);
     })
-
+  }
+  
+  // 防止window onload回调重复出现
+  function addLoadEvent(func) {
+    var oldOnload = window.onload
+    if (typeof window.onload != 'function') {
+      window.onload = func
+    } else {
+      window.onload = function () {
+        oldOnload()
+        func()
+      }
+    }
   }
 })();

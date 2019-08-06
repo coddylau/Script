@@ -24,3 +24,9 @@
 部分网站使用canvas占用电脑太多性能，删除这些canvas标签，画布小于300像素的不删除
 
 [删除canvas](https://github.com/coddylau/Script/blob/master/remove-canvas.js)
+
+### 删除微博推送信息
+
+微博推送信息太烦，删除，防止自己走神
+
+[删除微博推送](https://github.com/coddylau/Script/blob/master/weibo-zen.js)
