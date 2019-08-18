@@ -1,4 +1,4 @@
-## 使用
+## 浏览器中使用的脚本
 
 安装Tampermonkey后可使用以下脚本[Tampermonkey官网](https://www.tampermonkey.net/)
 
@@ -30,3 +30,26 @@
 微博推送信息太烦，删除，防止自己走神
 
 [删除微博推送](https://github.com/coddylau/Script/blob/master/weibo-zen.js)
+
+
+## NODE中使用的脚本
+
+### 合并同名文件
+
+合并文本类型文件，如 md
+```javascript
+// 在merge.js文件传递一个配置对象，一个是相对于此js文件的相对路径， 再传入一个文件的类型
+// 合并后的文件会在当前目录生成mergefile文件
+merge({
+  filePath: './md',
+  fileType: 'md'
+})
+```
+```bash
+# 修改完配置后
+node merge.js
+```
+
+
+
+[合并文件](https://github.com/coddylau/Script/blob/master/merge.js)
