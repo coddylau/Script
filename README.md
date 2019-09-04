@@ -39,7 +39,8 @@
 合并 文本类型文件
 ```bash
 # 使用方法: node merge.js [相对于此文件的目录名称] [文件类型]
-node merge.js md book
+# 例子
+node merge.js book md
 ```
 
 
