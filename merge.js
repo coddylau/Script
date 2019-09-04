@@ -1,22 +1,53 @@
 const fs = require('fs')
 const path = require('path')
 
+let filePath = process.argv[2]
+let fileType = process.argv[3]
+
+
 // 示例
 // merge({
 //   filePath: './md',
 //   fileType: 'md'
 // })
 
+filePath = getArgument(filePath)
+fileType = getArgument(fileType)
+
+if (fileType && filePath) {
+  merge({
+    filePath,
+    fileType
+  })
+} else {
+  console.log('使用方法: node merge.js [相对于此文件的目录名称] [文件类型]')
+}
+
+function getArgument(file) {
+  const re = /-*(?<name>\w+)/
+  const list = re.exec(file)
+
+  if (list.groups) {
+    return list.groups.name
+  }
+  
+}
 
 // 合并文件主程序， 传入文件路径和文件类型，会在当前路径生成一个合并后的mergefile文件
 async function merge({ filePath, fileType }) {
   filePath = path.join(__dirname, filePath)
   let fileList = await getFileList(filePath, fileType)
-
+  if (fileList.length === 0) return console.log('没有需要合并的文件')
   for (let i = 0; i < fileList.length; i++) {
-    let flag = await writeFile(fileList[i], fileType)
-    if (flag) {
-      continue
+    try {
+      let flag = await writeFile(fileList[i], fileType)
+      if (!flag) {
+        break
+      } else {
+        continue
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 }
@@ -29,7 +60,7 @@ function writeFile(file, fileType) {
       if (err) {
         console.log(`${file}文件路径有问题，或文件不可读取`)
         reject(err)
-        return err
+        return
       }
       fs.appendFile(BaseFile, data, (err) => {
         if (err) {

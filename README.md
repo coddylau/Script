@@ -36,18 +36,10 @@
 
 ### 合并同名文件
 
-合并文本类型文件，如 md
-```javascript
-// 在merge.js文件传递一个配置对象，一个是相对于此js文件的相对路径， 再传入一个文件的类型
-// 合并后的文件会在当前目录生成mergefile文件
-merge({
-  filePath: './md',
-  fileType: 'md'
-})
-```
+合并 文本类型文件
 ```bash
-# 修改完配置后
-node merge.js
+# 使用方法: node merge.js [相对于此文件的目录名称] [文件类型]
+node merge.js md book
 ```
 
 
