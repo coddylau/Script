@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         微博Zen
-// @version      0.1
+// @version      0.2
 // @description  删除微博影响注意力的部分
 // @author       coddylau
 // @match        https://weibo.com/*
@@ -12,14 +12,33 @@
   addLoadEvent(zen)
   //将内容推送删除
   function zen() {
-    let item = document.querySelector('#v6_pl_content_friendsfeed')
-    // 上部分导航栏删除
-    document.querySelector('.WB_global_nav').remove()
-    // 左侧的分组删除
-    document.querySelector('.WB_main_l').remove()
-    // 删除发送框上面的话题
+    // 推送节点
+
+    let item = document.querySelector('#v6_pl_content_friendsfeed') || document.querySelector('div[node-type=homefeed]')
+    let nodeList = []
+
+    // 头部搜索框节点
+    nodeList.push(document.querySelector('.gn_search_v2 > .placeholder'))
+    // 右侧书和明星推荐
+    nodeList.push(document.querySelector('#v6_pl_rightmod_rank'))
+    // 右侧话题
+    let arr = document.querySelectorAll('.WB_right_module')
+    if (arr) {
+      arr = Array.prototype.slice.call(arr)
+      nodeList = nodeList.concat(arr)
+    }
+
+    // 输入框上部分
     document.querySelector('div[node-type="recommendTopic"]').remove()
 
+    // 传递节点数组隐藏节点
+    function hideNode(list) {
+      list.forEach(value => {
+        value.style.display = 'none'
+      })
+    }
+
+    hideNode(nodeList)
 
     let cb = () => {
       // 删除推送的新微博提示
