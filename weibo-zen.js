@@ -29,23 +29,40 @@
     }
 
     // 输入框上部分
-    document.querySelector('div[node-type="recommendTopic"]').remove()
+    let recommendTopic = document.querySelector('div[node-type="recommendTopic"]')
+    if (recommendTopic) {
+      recommendTopic.remove()
+    }
+
+    // 去除头像页背景图片动画
+    let backimg = document.querySelector('.banner_transition')
+
+    if (backimg) {
+      backimg.style.transition = 'none'
+    }
 
     // 传递节点数组隐藏节点
     function hideNode(list) {
       list.forEach(value => {
-        value.style.display = 'none'
+        if (value.style) {
+          value.style.display = 'none'
+        }
       })
     }
 
+    nodeList = nodeList.filter(value => {
+      return value !== null
+    })
     hideNode(nodeList)
 
-    let cb = () => {
-      // 删除推送的新微博提示
-      document.querySelector('#home_new_feed_tip') && document.querySelector('#home_new_feed_tip').remove()
+    if (item) {
+      let cb = () => {
+        // 删除推送的新微博提示
+        document.querySelector('#home_new_feed_tip') && document.querySelector('#home_new_feed_tip').remove()
+      }
+      let observer = new MutationObserver(cb)
+      observer.observe(item, { childList: true })
     }
-    let observer = new MutationObserver(cb)
-    observer.observe(item, { childList: true })
   }
   // 防止window onload回调重复出现
   function addLoadEvent(func) {
