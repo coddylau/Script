@@ -18,35 +18,40 @@
     let postArea = document.querySelector("textarea.W_input")
     let postBtn = document.querySelector('.func_area')
     // 点击发送微博选项
-    document.querySelector('a[action-type="showPublishTo"]').click()
-
-    // 查看是否有仅自己可见按钮
-    let cb = () => {
-      postArea.click()
-      // observer.disconnect()
+    let publishTo = document.querySelector('a[action-type="showPublishTo"]')
+    if (publishTo) {
+      publishTo.click()
     }
-    let observer = new MutationObserver(cb)
-    observer.observe(postBtn, { childList: true })
+    if (postBtn && postArea) {
+      // 查看是否有仅自己可见按钮
+      let cb = () => {
+        postArea.click()
+        // observer.disconnect()
+      }
+      let observer = new MutationObserver(cb)
+      observer.observe(postBtn, { childList: true })
 
-    // 点击仅自己可见按钮
-    postArea.addEventListener('change', () => {
-      let tap = document.querySelectorAll('li[action-type="select"]')
-      // 检查仅自己可见按钮是否被选中
-      if (tap && tap[2].classList[0] === 'cur') { return }
-      let flag = 1
-      let timer
-      timer = setInterval(() => {
-        flag++
-        if (flag > 3) {
-          clearInterval(timer)
-          return
-        }
-        // 点击仅自己可见
-        document.querySelector('li[rank="1"] a').click()
-      }, 500);
-    })
+
+      // 点击仅自己可见按钮
+      postArea.addEventListener('change', () => {
+        let tap = document.querySelectorAll('li[action-type="select"]')
+        // 检查仅自己可见按钮是否被选中
+        if (tap && tap[2].classList[0] === 'cur') { return }
+        let flag = 1
+        let timer
+        timer = setInterval(() => {
+          flag++
+          if (flag > 3) {
+            clearInterval(timer)
+            return
+          }
+          // 点击仅自己可见
+          document.querySelector('li[rank="1"] a').click()
+        }, 500);
+      })
+    }
   }
-  
+
   // 防止window onload回调重复出现
   function addLoadEvent(func) {
     var oldOnload = window.onload
