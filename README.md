@@ -31,6 +31,13 @@
 
 [删除微博推送](https://github.com/coddylau/Script/blob/master/weibo-zen.js)
 
+### B 站选中所有 UP 主
+
+用于设置分组时选中所有 UP 主
+
+注意点：进入设置分组页面后需要刷新网页才可以启用
+
+[B 站选中所有 UP 主](https://github.com/coddylau/Script/blob/master/selectAllUp.js)
 
 ## NODE中使用的脚本
 
@@ -42,7 +49,5 @@
 # 例子
 node merge.js book md
 ```
-
-
 
 [合并文件](https://github.com/coddylau/Script/blob/master/merge.js)
